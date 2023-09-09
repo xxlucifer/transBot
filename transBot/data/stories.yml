@@ -1,0 +1,33 @@
+version: "3.1"
+
+stories:
+
+- story: Greet and ask what to do
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_what_to_show
+
+
+- story: Greet and check balance
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: check_balance
+  - action: action_check_balance
+
+- story: Greet and check transaction history
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: transaction_history
+  - action: action_transaction_history
+
+
+
+- story: Deny providing info
+  steps:
+  - intent: provide_info
+  - action: action_check_balance
+  - intent: deny
+  - action: utter_goodbye

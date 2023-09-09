@@ -1,0 +1,55 @@
+version: '3.1'
+intents:
+- affirm
+- check_balance
+- deny
+- goodbye
+- greet
+- provide_info
+- transaction_history
+entities:
+- name
+- account_number
+- phone_number
+slots:
+  name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: name
+  account_number:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: account_number
+  phone_number:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: phone_number
+actions:
+- utter_provide_inf
+- utter_greet
+- utter_goodbye
+- action_check_balance
+- action_transaction_history
+responses:
+  utter_greet:
+  - text: Hello! I am your personal transaction robot. How can I help you?
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_goodbye:
+  - text: Goodbye! Glad I could be of some help!
+  utter_provide_inf:
+  - text: Please provide me your name, account number & phone number.
+  - text: Please enter your name, account number & phone number.
+  utter_what_to_show:
+  - text: What do you want to see? Account Balance or Transaction History?
+    buttons:
+    - title: "Check my account balance."
+      payload: "/check_balance"
+    - title: "Check my transaction history."
+      payload: "/check_transaction_history"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
